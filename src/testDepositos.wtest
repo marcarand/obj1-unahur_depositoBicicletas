@@ -1,0 +1,30 @@
+import depositos.*
+import bicicletas.*
+import accesorios.*
+
+test "depósito" {
+
+	// bicicletas en depósito
+	// primera bici
+	const farolito1 = new Farolito()
+	const bici1 = new Bici(rodado=28, largo=150, marca='Olmo', accesorios=['farolito1'])
+	// segunda bici
+	const farolito2 = new Farolito()
+	const canasto2 = new Canasto(volumen=8)
+	const bici2 = new Bici(rodado=26, largo=110, marca='Legnano', accesorios=['farolito2', 'canasto2'])
+	// tercera bici
+	const morral3 = new Morral(largo=6, ojoGato=false)
+	const bici3 = new Bici(rodado=20, largo=90, marca='Legnano', accesorios=['morral3'])
+	
+
+	// depósito
+	const deposito = new Deposito(bicis=['bici1', 'bici2', 'bici3'])
+	
+	// comprobaciones
+	assert.equals(['bici1', 'bici2'], deposito.bicisRapidas())
+	assert.equals(['Olmo','Legnano'], deposito.marcas())
+	assert.that(not deposito.nocturno())
+	assert.that(deposito.biciParaCarga(10))
+	assert.that(not deposito.biciParaCarga(50))
+
+}

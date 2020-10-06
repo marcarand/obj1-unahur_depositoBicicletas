@@ -1,0 +1,45 @@
+import bicicletas.*
+import accesorios.*
+
+test "3bicis" {
+
+	// primera bici
+	var farolito1 = new Farolito()
+	var bici1 = new Bici(rodado=28, largo=150, marca='Olmo', accesorios=['farolito1'])
+	
+	assert.equals(85, bici1.altura())
+
+	// debería ser '30', porque (28*2.5)+15 = 85 y es menor a 120 y la veloc. crucer. es (28+2)
+	assert.equals(34, bici1.velocidadCrucero())
+	// dejé el valor que aparece en la consigna
+
+	assert.equals(0, bici1.carga())
+	assert.equals(14.5, bici1.peso())
+	assert.that(bici1.tieneLuz())
+	assert.equals(1, bici1.cantAccesoriosLivianos())
+
+	// segunda bici
+	var farolito2 = new Farolito()
+	var canasto2 = new Canasto(volumen=8)
+	var bici2 = new Bici(rodado=26, largo=110, marca='Legnano', accesorios=['farolito2', 'canasto2'])
+	
+	assert.equals(80, bici2.altura())
+	assert.equals(28, bici2.velocidadCrucero())
+	assert.equals(23, bici2.carga())
+	assert.equals(15.5, bici2.peso())
+	assert.that(bici2.tieneLuz())
+	assert.equals(2, bici2.cantAccesoriosLivianos())
+
+
+	// tercera bici
+	var morral3 = new Morral(largo=6, ojoGato=false)
+	var bici3 = new Bici(rodado=20, largo=90, marca='Legnano', accesorios=['morral3'])
+	
+	assert.equals(65, bici3.altura())
+	assert.equals(22, bici3.velocidadCrucero())
+	assert.equals(2, bici3.carga())
+	assert.equals(11.2, bici3.peso())
+	assert.that(not bici2.tieneLuz())
+	assert.equals(0, bici2.cantAccesoriosLivianos())
+
+}
